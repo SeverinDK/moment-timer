@@ -1,0 +1,86 @@
+<html>
+
+<head>
+	<script src="timer.js"></script>
+</head>
+
+<body>
+	<h1>TimerJS</h1>
+	<p>
+		Example of TimerJS using its Interval and Timeout options.<br>
+		Each timer in this example has a duration of 10000ms.<br>
+		For this example both timers are stopped after 1000ms, to show that they an be paused.<br><br>
+		The timeout will only fire once, as a timeout should, but for the examples sake, start() will be called on it again after it has been fired.<br>
+		This is being done to show that the timeout can be reused after it has completed.<br><br>
+		In case you are wondering, the cool part about this timer, is that you can start/stop it whenever you want, and get the remaining duration.<br>
+		This can be useful when doing animations that are stopped and needs to pick up where they left off later.<br><br>
+		As with most timers, it's not accurate to the millisecond, but accurate enough to handle most tasks. It's based on JavaScripts own setTimeout/setInterval.
+	</p>
+
+	<hr>
+
+	<h1>Example of Interval.</h1>
+	<p>The interval will be stopped for one second, to show that you can pause it and have it pick up where if left off.</p>
+
+	<div id="interval" style="border: 1px solid black;">
+		<div id="intervalTimer"></div>
+		<script>
+			(function() {
+				var container = document.getElementById("interval");
+				var startTick = new Date().getTime();
+				var interval = new Interval(function() { container.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
+				setTimeout(function() {
+				    interval.stop();
+				    container.innerHTML += "Stopped interval. [Duration left: " + interval.getRemainingDuration() + "]<br>";
+				}, 1000);
+
+				setTimeout(function() {
+				    interval.start();
+				    container.innerHTML += "Started interval. [Duration left: " + interval.getRemainingDuration() + "]<br>";
+				}, 2000);
+
+				setInterval(function() {
+					document.getElementById("intervalTimer").innerHTML = "Remaining duration: " + interval.getRemainingDuration();
+				}, 15);
+			})();
+		</script>
+	</div>
+
+	<hr>
+
+	<h1>Example of Timeout.</h1>
+	<p>
+		The timeout will be stopped for one second, to show that you can pause it and have it pick up where if left off.<br>
+		Once the timeout has fired, the start function will be called again. This is to show that a timeout can be reused.<br>
+		In theory it could be used as an interval, if it calls start on itself each time it fires, but it would be pointless as there is already an Inteval class.
+	</p>
+
+	<div id="timeout" style="border: 1px solid black;">
+		<div id="timeoutTimer"></div>
+		<script>
+			(function() {
+				var container = document.getElementById("timeout");
+				var startTick = new Date().getTime();
+				var timeout = new Interval(function() { container.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
+				setTimeout(function() {
+				    timeout.stop();
+				    container.innerHTML += "Stopped timeout. [Duration left: " + timeout.getRemainingDuration() + "]<br>";
+				}, 1000);
+
+				setTimeout(function() {
+				    timeout.start();
+				    container.innerHTML += "Started timeout. [Duration left: " + timeout.getRemainingDuration() + "]<br>";
+				}, 2000);
+
+				setTimeout(function() {
+				    timeout.start();
+				}, 12000);
+
+				setInterval(function() {
+					document.getElementById("timeoutTimer").innerHTML = "Remaining duration: " + timeout.getRemainingDuration();
+				}, 15);
+			})();
+		</script>
+	</div>
+</body>
+</html>
