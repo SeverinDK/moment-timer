@@ -1,3 +1,13 @@
+/**
+ * 2016
+ * @summary     Rewrite og setInterval & setTimeout.
+ *
+ * @author      Søren Ernst <some12thing@gmail.com>
+ * @link        https://github.com/SeverinDK/TimerJS
+ */
+ 
+/** jshint {inline configuration here} */
+
 function Timer(duration) {
     this.duration = duration;
     this.paused = true;
