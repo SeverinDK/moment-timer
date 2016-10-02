@@ -25,24 +25,22 @@
 	<div id="interval" style="border: 1px solid black;">
 		<div id="intervalTimer"></div>
 		<script>
-			(function() {
-				var container = document.getElementById("interval");
-				var startTick = new Date().getTime();
-				var interval = new Interval(function() { container.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
-				setTimeout(function() {
-				    interval.stop();
-				    container.innerHTML += "Stopped interval. [Duration left: " + interval.getRemainingDuration() + "]<br>";
-				}, 1000);
+			var intervalContainer = document.getElementById("interval");
+			var startTick = new Date().getTime();
+			var interval = new Interval(function() { intervalContainer.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
+			setTimeout(function() {
+			    interval.stop();
+			    intervalContainer.innerHTML += "Stopped interval. [Duration left: " + interval.getRemainingDuration() + "]<br>";
+			}, 1000);
 
-				setTimeout(function() {
-				    interval.start();
-				    container.innerHTML += "Started interval. [Duration left: " + interval.getRemainingDuration() + "]<br>";
-				}, 2000);
+			setTimeout(function() {
+			    interval.start();
+			    intervalContainer.innerHTML += "Started interval. [Duration left: " + interval.getRemainingDuration() + "]<br>";
+			}, 2000);
 
-				setInterval(function() {
-					document.getElementById("intervalTimer").innerHTML = "Remaining duration: " + interval.getRemainingDuration();
-				}, 15);
-			})();
+			setInterval(function() {
+				document.getElementById("intervalTimer").innerHTML = "Remaining duration: " + interval.getRemainingDuration();
+			}, 15);
 		</script>
 	</div>
 
@@ -58,28 +56,26 @@
 	<div id="timeout" style="border: 1px solid black;">
 		<div id="timeoutTimer"></div>
 		<script>
-			(function() {
-				var container = document.getElementById("timeout");
-				var startTick = new Date().getTime();
-				var timeout = new Timeout(function() { container.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
-				setTimeout(function() {
-				    timeout.stop();
-				    container.innerHTML += "Stopped timeout. [Duration left: " + timeout.getRemainingDuration() + "]<br>";
-				}, 1000);
+			var timeoutContainer = document.getElementById("timeout");
+			var startTick = new Date().getTime();
+			var timeout = new Timeout(function() { timeoutContainer.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
+			setTimeout(function() {
+			    timeout.stop();
+			    timeoutContainer.innerHTML += "Stopped timeout. [Duration left: " + timeout.getRemainingDuration() + "]<br>";
+			}, 1000);
 
-				setTimeout(function() {
-				    timeout.start();
-				    container.innerHTML += "Started timeout. [Duration left: " + timeout.getRemainingDuration() + "]<br>";
-				}, 2000);
+			setTimeout(function() {
+			    timeout.start();
+			    timeoutContainer.innerHTML += "Started timeout. [Duration left: " + timeout.getRemainingDuration() + "]<br>";
+			}, 2000);
 
-				setTimeout(function() {
-				    timeout.start();
-				}, 12000);
+			setTimeout(function() {
+			    timeout.start();
+			}, 12000);
 
-				setInterval(function() {
-					document.getElementById("timeoutTimer").innerHTML = "Remaining duration: " + timeout.getRemainingDuration();
-				}, 15);
-			})();
+			setInterval(function() {
+				document.getElementById("timeoutTimer").innerHTML = "Remaining duration: " + timeout.getRemainingDuration();
+			}, 15);
 		</script>
 	</div>
 </body>
