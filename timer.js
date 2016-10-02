@@ -15,7 +15,7 @@ Timer.prototype.getRemainingDuration = function() {
         }
     }
 
-    return false;
+    return 0;
 }
 
 Timer.prototype.updateStartEndTick = function() {
@@ -106,6 +106,8 @@ Timeout.prototype.start = function() {
         if(this.timer.restart) {
             var self = this;
             setTimeout(function() {
+                self.timer.startTick = null;
+                self.timer.endTick = null;
                 return self.callback();
             }, this.getRemainingDuration());
 
@@ -116,7 +118,9 @@ Timeout.prototype.start = function() {
 
         var self = this;
         this.timeout = setTimeout(function(){
-            self.timer.updateStartEndTick();
+            self.timer.startTick = null;
+            self.timer.endTick = null;
+            self.timeout = null;
             return self.callback();
         }, this.timer.duration);
 

@@ -61,7 +61,7 @@
 			(function() {
 				var container = document.getElementById("timeout");
 				var startTick = new Date().getTime();
-				var timeout = new Interval(function() { container.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
+				var timeout = new Timeout(function() { container.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
 				setTimeout(function() {
 				    timeout.stop();
 				    container.innerHTML += "Stopped timeout. [Duration left: " + timeout.getRemainingDuration() + "]<br>";
