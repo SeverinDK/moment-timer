@@ -57,8 +57,8 @@ var timeout = new Timeout(function() {
   //Callback 
 }, 10000, false);
 timeout.start();
-inteval.stop();
-inteval.start();
+timeout.stop();
+timeout.start();
 ```
 Stopping a timer will cause it to stop and wait to be started again. Once its started again it will pick up where it left off.
 
@@ -78,7 +78,7 @@ var timeout = new Timeout(function() {
 timeout.start();
 timeout.stop();
 timeout.start();
-var remainingDuration = interval.getRemainingDuration(); // >> Remaining duration in milliseconds.
+var remainingDuration = timeout.getRemainingDuration(); // >> Remaining duration in milliseconds.
 ```
 
 ###Motivation
