@@ -18,16 +18,23 @@ Timer.prototype.getRemainingDuration = function() {
     return 0;
 }
 
-Timer.prototype.updateStartEndTick = function() {
+Timer.prototype.updateTicks = function() {
     this.startTick = new Date().getTime();
     this.endTick = this.startTick + this.duration;
 
     return true;
 }
 
-Timer.prototype.updateResetStartEndTick = function() {
+Timer.prototype.updateTicksWithTicksRemaining = function() {
     this.startTick = new Date().getTime();
     this.endTick = this.startTick + this.getRemainingDuration();
+
+    return true;
+}
+
+Timer.prototype.clearTicks = function() {
+    this.startTick = null;
+    this.endTick = null;
 
     return true;
 }
@@ -60,11 +67,11 @@ Interval.prototype.start = function() {
 
         var self = this;
         this.interval = setInterval(function(){
-            self.timer.updateStartEndTick();
+            self.timer.updateTicks();
             return self.callback();
         }, this.timer.duration);
 
-        this.timer.updateStartEndTick();
+        this.timer.updateTicks();
         this.timer.paused = false;
         this.looping = true;
         return true;
@@ -76,7 +83,7 @@ Interval.prototype.start = function() {
 Interval.prototype.stop = function() {
     if(!this.timer.paused && this.looping) {
         this.inteval = clearInterval(this.interval);
-        this.timer.updateResetStartEndTick();
+        this.timer.updateTicksWithTicksRemaining();
         this.timer.paused = true;
         this.timer.restart = true;
         this.looping = false;
@@ -106,8 +113,7 @@ Timeout.prototype.start = function() {
         if(this.timer.restart) {
             var self = this;
             setTimeout(function() {
-                self.timer.startTick = null;
-                self.timer.endTick = null;
+                self.timer.clearTicks();
                 return self.callback();
             }, this.getRemainingDuration());
 
@@ -118,13 +124,11 @@ Timeout.prototype.start = function() {
 
         var self = this;
         this.timeout = setTimeout(function(){
-            self.timer.startTick = null;
-            self.timer.endTick = null;
-            self.timeout = null;
+            self.timer.clearTicks();
             return self.callback();
         }, this.timer.duration);
 
-        this.timer.updateStartEndTick();
+        this.timer.updateTicks();
         this.timer.paused = false;
         return true;
     }
@@ -135,7 +139,7 @@ Timeout.prototype.start = function() {
 Timeout.prototype.stop = function() {
     if(!this.timer.paused) {
         this.timeout = clearTimeout(this.timeout);
-        this.timer.updateResetStartEndTick();
+        this.timer.updateTicksWithTicksRemaining();
         this.timer.paused = true;
         this.timer.restart = true;
         return true;

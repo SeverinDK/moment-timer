@@ -27,7 +27,7 @@
 		<script>
 			var intervalContainer = document.getElementById("interval");
 			var startTick = new Date().getTime();
-			var interval = new Interval(function() { intervalContainer.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
+			var interval = new Interval(function() { intervalContainer.innerHTML += "Callback fired " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
 			setTimeout(function() {
 			    interval.stop();
 			    intervalContainer.innerHTML += "Stopped interval. [Duration left: " + interval.getRemainingDuration() + "]<br>";
@@ -58,7 +58,7 @@
 		<script>
 			var timeoutContainer = document.getElementById("timeout");
 			var startTick = new Date().getTime();
-			var timeout = new Timeout(function() { timeoutContainer.innerHTML += "Callbak fired after: " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
+			var timeout = new Timeout(function() { timeoutContainer.innerHTML += "Callback fired " + (new Date().getTime() - startTick) + "ms after script was started.<br>"; }, 10000);
 			setTimeout(function() {
 			    timeout.stop();
 			    timeoutContainer.innerHTML += "Stopped timeout. [Duration left: " + timeout.getRemainingDuration() + "]<br>";
