@@ -11,7 +11,7 @@ Timer.prototype.getRemainingDuration = function() {
         if(this.restart) {
             return this.endTick - this.startTick;
         } else {
-            return this.endTick - new Date().getTime();
+            return this.endTick - Date.now();
         }
     }
 
@@ -19,14 +19,14 @@ Timer.prototype.getRemainingDuration = function() {
 }
 
 Timer.prototype.updateTicks = function() {
-    this.startTick = new Date().getTime();
+    this.startTick = Date.now();
     this.endTick = this.startTick + this.duration;
 
     return true;
 }
 
 Timer.prototype.updateTicksWithTicksRemaining = function() {
-    this.startTick = new Date().getTime();
+    this.startTick = Date.now();
     this.endTick = this.startTick + this.getRemainingDuration();
 
     return true;
@@ -53,6 +53,7 @@ function Interval(callback, duration, autorun = true) {
 Interval.prototype.start = function() {
     if(this.timer.paused && !this.looping) {
 
+        // Takes care of restarts. If the timer has been stopped, this will make sure the leftover duration is executed.
         if(this.timer.restart) {
             var self = this;
             setTimeout(function() {
@@ -60,7 +61,7 @@ Interval.prototype.start = function() {
                 return self.start();
             }, this.getRemainingDuration());
 
-            this.timer.endTick = new Date().getTime() + this.getRemainingDuration();
+            this.timer.endTick = Date.now() + this.getRemainingDuration();
             this.timer.restart = false;
             return true;
         }
@@ -110,6 +111,7 @@ function Timeout(callback, duration, autorun = true) {
 Timeout.prototype.start = function() {
     if(this.timer.paused) {
 
+        // Takes care of restarts. If the timer has been stopped, this will make sure the leftover duration is executed.
         if(this.timer.restart) {
             var self = this;
             setTimeout(function() {
@@ -117,7 +119,7 @@ Timeout.prototype.start = function() {
                 return self.callback();
             }, this.getRemainingDuration());
 
-            this.timer.endTick = new Date().getTime() + this.getRemainingDuration();
+            this.timer.endTick = Date.now() + this.getRemainingDuration();
             this.timer.restart = false;
             return true;
         }
