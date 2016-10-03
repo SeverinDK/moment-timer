@@ -1,7 +1,7 @@
 # timer.js
 
 ###Synopsis
-This is a rewrites of JavaScripts <b>setInterval</b> & <b>setTimeout</b>.
+This is a rewrite of JavaScripts <b>setInterval</b> & <b>setTimeout</b>.
 
 I wrote this script to get more control over timers in JavaScript. Like any other web developer I use timers for a lot of different tasks. Sadly, many times when I have worked with timers in my time as a web developer, I don't feel like I have the enough control over the timers. That's why I decided to rewrite the timers, so they work exactly as I would expect timers to work.
 
