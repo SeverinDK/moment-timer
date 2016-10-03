@@ -46,28 +46,28 @@ var timeout =  moment().timeout(function() {
 ```javascript
 var interval = moment().interval(function() { 
   //Callback 
-}, 10000, false);
+}, 10000, true);
 inteval.start();
 
 var timeout =  moment().timeout(function() { 
   //Callback 
-}, 10000, false);
+}, 10000, true);
 timeout.start();
 ```
-Setting the third parameter to false will prevent the timer from autorunning. It can then be started by using the start() function.
+Setting the third parameter to true will cause the timer to wait for start().
 
-#### Example of disable autorun and start/stop functions.
+#### Example of disabling autorun and start/stop functions.
 ```javascript
 var interval = moment().interval(function() { 
   //Callback 
-}, 10000, false);
+}, 10000, true);
 inteval.start();
 inteval.stop();
 inteval.start();
 
 var timeout =  moment().timeout(function() { 
   //Callback 
-}, 10000, false);
+}, 10000, true);
 timeout.start();
 timeout.stop();
 timeout.start();
@@ -78,7 +78,7 @@ Stopping a timer will cause it to stop and wait to be started again. Once its st
 ```javascript
 var interval = moment().interval(function() { 
   //Callback 
-}, 10000, false);
+}, 10000, true);
 inteval.start();
 inteval.stop();
 inteval.start();
@@ -86,7 +86,7 @@ var remainingDuration = interval.getRemainingDuration(); // >> Remaining duratio
 
 var timeout =  moment().timeout(function() { 
   //Callback 
-}, 10000, false);
+}, 10000, true);
 timeout.start();
 timeout.stop();
 timeout.start();
