@@ -1,0 +1,21 @@
+{
+	"name": "moment-timers",
+	"version": "1.0.0",
+	"description": "A moment.js plugin for timers setInterval & setTimeout.",
+	"main": "lib/moment-timers.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SeverinDK/moment-timers"
+	},
+	"authors": [
+		"Søren Ernst <some12thing@gmail.com>"
+	],
+	"keywords": [
+		"setInterval",
+		"setTimeout"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/SeverinDK/moment-timers/issues"
+	}
+}
