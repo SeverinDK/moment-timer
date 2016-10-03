@@ -7,6 +7,8 @@ I wrote this script to get more control over timers in JavaScript. Like any othe
 
 I will continue to update on this script for a little while yet, until it fully covers my needs.
 
+<hr>
+
 ###Live Demo
 CodePen Demo: http://codepen.io/SeverinDK/pen/ALQJqo
 
@@ -20,6 +22,7 @@ This can be useful when doing animations that are stopped and needs to pick up w
 
 As with most timers, it's not accurate to the millisecond, but accurate enough to handle most tasks. It's based on JavaScripts own setTimeout/setInterval.
 
+<hr>
 
 ###Code Example
 
@@ -85,9 +88,15 @@ timeout.start();
 var remainingDuration = timeout.getRemainingDuration(); // >> Remaining duration in milliseconds.
 ```
 
+<hr>
+
 ###Motivation
 My motivation for makning this script is to prevent any annoyance in the future when working with JavaScript timers. With these tools, I know that I will prevent a lot of the problems I have had through time.
 But ofc, the biggest motivation is simply making the idea come alive and enjoying the result. Every completed idea is a new lesson learned!
 
+<hr>
+
 ###License
 MIT - Go ahead and do whatever you want! I doooon't caaare! ;-)
+
+<hr>
