@@ -1,29 +1,25 @@
-# moment-timers
+# moment-timer
 
 ###Synopsis
-This is Moment.js plugin that offers a rewrite of JavaScripts <b>setInterval</b> & <b>setTimeout</b>.
-
-I wrote this to get more control over timers in JavaScript. Like any other web developer I use timers for a lot of different tasks. Sadly, many times when I have worked with timers in my time as a web developer, I don't feel like I have the enough control over the timers. That's why I decided to rewrite the timers, so they work exactly as I would expect timers to work. Someone suggested that I made it a moment plugin, which also made sense to me.
-
-I will continue to update on this script for a little while yet, until it fully covers my needs.
+This is a Moment.js plugin that allows the use of timers, which offer much more control than the native JavaScript timers. It's basically a rewrite of JavaScripts own setInterval and setTimeout. For an example, see the example folder or read the Usage section below.
 
 <hr>
 
 ###Installation
 
-#####Node.js
+#### Node.js
 ```
-npm install moment-timers
-```
-
-#####Bower
-```
-bower install moment-timers
+npm install moment-timer
 ```
 
-#####Browser
+#### Bower
 ```
-<script src="path/to/moment-timers.js"></script>
+bower install moment-timer
+```
+
+#### Browser
+```
+<script src="path/to/moment-timer.js"></script>
 ```
 When using this plugin in the browser, be sure to include moment.js on your page first.
 
@@ -31,66 +27,48 @@ When using this plugin in the browser, be sure to include moment.js on your page
 
 ###Usage
 
-#### In this example a Interval and a Timeout are created. By default they will autorun.
+#### How to use moment-timer. This will create a timeout like timer that runs after five seconds.
 ```javascript
-var interval = moment().interval(function() { 
-  //Callback 
-}, 10000);
-
-var timeout =  moment().timeout(function() { 
-  //Callback 
-}, 10000);
+var timer = moment.duration(5, "seconds").timer(function() { 
+  // Callback 
+});
 ```
 
-#### Example of disable autorun and start function.
+#### In this example we will create a interval like timer. Simply set the <b>loop</b> attribute.
 ```javascript
-var interval = moment().interval(function() { 
-  //Callback 
-}, 10000, true);
-inteval.start();
-
-var timeout =  moment().timeout(function() { 
-  //Callback 
-}, 10000, true);
-timeout.start();
+var timer = moment.duration(5, "seconds").timer({loop: true}, function() { 
+  // Callback 
+});
 ```
-Setting the third parameter to true will cause the timer to wait for start().
 
-#### Example of disabling autorun and start/stop functions.
+#### Prevent the timer from starting on creation, by using the <b>start</b> attribute, so we can start it later.
 ```javascript
-var interval = moment().interval(function() { 
-  //Callback 
-}, 10000, true);
-inteval.start();
-inteval.stop();
-inteval.start();
-
-var timeout =  moment().timeout(function() { 
-  //Callback 
-}, 10000, true);
-timeout.start();
-timeout.stop();
-timeout.start();
+var timer = moment.duration(5, "seconds").timer({loop: true, start: false}, function() { 
+  // Callback 
+});
+timer.start();
 ```
-Stopping a timer will cause it to stop and wait to be started again. Once its started again it will pick up where it left off.
 
-#### Example of getRemainingDuration.
+#### Delaying a timer can be done by using the <b>wait</b> attribute.
 ```javascript
-var interval = moment().interval(function() { 
-  //Callback 
-}, 10000, true);
-inteval.start();
-inteval.stop();
-inteval.start();
-var remainingDuration = interval.getRemainingDuration(); // >> Remaining duration in milliseconds.
+var timer = moment.duration(5, "seconds").timer({
+  wait: moment.duration(1, "hour"), // Will cause the timer to wait for an hour before it starts.
+  loop: true, 
+}, function() { 
+  // Callback 
+});
+```
 
-var timeout =  moment().timeout(function() { 
-  //Callback 
-}, 10000, true);
-timeout.start();
-timeout.stop();
-timeout.start();
-var remainingDuration = timeout.getRemainingDuration(); // >> Remaining duration in milliseconds.
+#### Getting the remaining duration of a timer.(How long until it ends or loops again)
+```javascript
+var timer = moment.duration(5, "seconds").timer({
+  wait: moment.duration(1, "hour"), // Will cause the timer to wait for an hour before it starts.
+  loop: true, 
+}, function() { 
+  // Callback 
+});
+
+var remainingDuration = timer.getRemainingDuration();
 ```
 
 <hr>
