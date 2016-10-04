@@ -7,7 +7,7 @@ This is a Moment.js plugin that allows the use of timers, which offer much more 
 
 ###Installation
 
-#### Node.js
+#### Npm
 ```
 npm install moment-timer
 ```
