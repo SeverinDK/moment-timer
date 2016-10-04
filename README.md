@@ -52,8 +52,8 @@ timer.start();
 #### Delaying a timer can be done by using the <b>wait</b> attribute.
 ```javascript
 var timer = moment.duration(5, "seconds").timer({
-  wait: moment.duration(1, "hour"), // Will cause the timer to wait for an hour before it starts.
-  loop: true, 
+  wait: moment.duration(1, "hour"),
+  loop: true,
 }, function() { 
   // Callback 
 });
@@ -62,7 +62,6 @@ var timer = moment.duration(5, "seconds").timer({
 #### Getting the remaining duration of a timer. (How long until it ends or loops again)
 ```javascript
 var timer = moment.duration(5, "seconds").timer({
-  wait: moment.duration(1, "hour"), // Will cause the timer to wait for an hour before it starts.
   loop: true, 
 }, function() { 
   // Callback 
