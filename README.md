@@ -59,7 +59,7 @@ var timer = moment.duration(5, "seconds").timer({
 });
 ```
 
-#### Getting the remaining duration of a timer.(How long until it ends or loops again)
+#### Getting the remaining duration of a timer. (How long until it ends or loops again)
 ```javascript
 var timer = moment.duration(5, "seconds").timer({
   wait: moment.duration(1, "hour"), // Will cause the timer to wait for an hour before it starts.
