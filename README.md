@@ -70,6 +70,17 @@ var timer = moment.duration(5, "seconds").timer({
 var remainingDuration = timer.getRemainingDuration();
 ```
 
+#### Setting the remaining duration of a timer. This will override the duration set when the timer was created.
+```javascript
+var timer = moment.duration(5, "seconds").timer({
+  loop: true, 
+}, function() { 
+  // Callback 
+});
+
+timer.setDuration(2500);
+```
+
 #### In this example a timer is set to start instantly.<br>Since the loop attribute hasn't been set, it will behave like a timeout, however it is possible to reuse it simply by calling start().
 ```javascript
 var timer = moment.duration().timer({
