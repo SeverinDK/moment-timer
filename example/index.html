@@ -26,6 +26,7 @@
 	<div id="timeout" style="border: 1px solid black;">
 		<div id="timeoutTimer"></div>
 		<script>
+		var bool = false;
 			var timeoutContainer = document.getElementById("timeout");
 			var startTick = new Date().getTime();
 			var timeout = moment.duration(1000).timer({
@@ -34,7 +35,7 @@
 				function() { 
 					timeoutContainer.innerHTML += "Callback fired " 
 					+ (new Date().getTime() - startTick) 
-					+ "ms after script was started.<br>"; 
+					+ "ms after script was started.<br>";
 				});
 		</script>
 	</div>
@@ -51,7 +52,7 @@
 		<script>
 			var intervalContainer = document.getElementById("interval");
 			var startTick = new Date().getTime();
-			var interval = moment.duration(5, "seconds").timer({
+			var interval = moment.duration(1, "seconds").timer({
 					loop: true
 				}, 
 				function() { 
