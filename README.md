@@ -78,7 +78,9 @@ var timer = moment.duration(5, "seconds").timer({
   // Callback 
 });
 
-timer.setDuration(2500);
+timer.duration(2000);
+timer.duration("2", "seconds");
+timer.duration({seconds: 2});
 ```
 
 #### In this example a timer is set to start instantly.<br>Since the loop attribute hasn't been set, it will behave like a timeout, however it is possible to reuse it simply by calling start().
