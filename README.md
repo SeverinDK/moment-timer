@@ -70,7 +70,7 @@ var timer = moment.duration(5, "seconds").timer({
 var remainingDuration = timer.getRemainingDuration();
 ```
 
-#### Setting the remaining duration of a timer. This will override the duration set when the timer was created.
+#### Setting the duration of a timer. This will override the duration set when the timer was created.
 ```javascript
 var timer = moment.duration(5, "seconds").timer({
   loop: true, 
