@@ -7,6 +7,9 @@
 		"type": "git",
 		"url": "https://github.com/SeverinDK/moment-timer"
 	},
+	"dependencies": {
+		"moment": "latest",	
+	},
 	"authors": [
 		"Søren Ernst <some12thing@gmail.com>"
 	],
