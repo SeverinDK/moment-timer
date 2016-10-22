@@ -37,6 +37,8 @@
 					+ (new Date().getTime() - startTick) 
 					+ "ms after script was started.<br>";
 				});
+
+			
 		</script>
 	</div>
 
@@ -60,6 +62,13 @@
 					+ (new Date().getTime() - startTick) 
 					+ "ms after script was started.<br>"; 
 				});
+
+			moment.duration(1500).timer({loop: false}, function() {
+				interval.stop();
+				moment.duration(1500).timer(function() {
+					interval.start();
+				});
+			});
 		</script>
 	</div>
 </body>
