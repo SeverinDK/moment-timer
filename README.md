@@ -34,7 +34,7 @@ var timer = moment.duration(5, "seconds").timer(function() {
 });
 ```
 
-#### In this example we will create a interval like timer. Simply set the <b>loop</b> attribute.
+#### In this example we will create an interval like timer. Simply set the <b>loop</b> attribute.
 ```javascript
 var timer = moment.duration(5, "seconds").timer({loop: true}, function() { 
   // Callback 
@@ -90,7 +90,7 @@ var timer = moment.duration().timer({
   // Callback 
 });
 
-var timer.start();
+timer.start();
 ```
 
 <hr>
