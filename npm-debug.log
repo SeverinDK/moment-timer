@@ -5,31 +5,100 @@
 2 info using npm@3.3.12
 3 info using node@v5.1.0
 4 verbose publish [ '.' ]
-5 verbose stack Error: Failed to parse json
-5 verbose stack Trailing comma in object at 12:2
-5 verbose stack 	},
-5 verbose stack 	^
-5 verbose stack     at parseError (C:\Program Files\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:379:11)
-5 verbose stack     at parseJson (C:\Program Files\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:68:23)
-5 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:48:5
-5 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\graceful-fs.js:76:16
-5 verbose stack     at tryToString (fs.js:414:3)
-5 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:401:12)
-6 verbose cwd C:\Users\Søren\code\moment-timer
-7 error Windows_NT 10.0.14393
-8 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
-9 error node v5.1.0
-10 error npm  v3.3.12
-11 error file C:\Users\Søren\code\moment-timer\package.json
-12 error code EJSONPARSE
-13 error Failed to parse json
-13 error Trailing comma in object at 12:2
-13 error 	},
-13 error 	^
-14 error File: C:\Users\Søren\code\moment-timer\package.json
-15 error Failed to parse package.json data.
-15 error package.json must be actual JSON, not just JavaScript.
-15 error
-15 error This is not a bug in npm.
-15 error Tell the package author to fix their package.json file. JSON.parse
-16 verbose exit [ 1, true ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\Users\\Søren\\code\\moment-timer',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\Søren\AppData\Roaming\npm-cache\moment-timer\1.1.2\package.tgz not in flight; packing
+9 info lifecycle moment-timer@1.1.2~prepublish: moment-timer@1.1.2
+10 silly lifecycle moment-timer@1.1.2~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ 'C:\\Users\\Søren\\AppData\\Roaming\\npm-cache\\moment-timer\\1.1.2\\package.tgz',
+11 verbose tar pack   'C:\\Users\\Søren\\code\\moment-timer' ]
+12 verbose tarball C:\Users\Søren\AppData\Roaming\npm-cache\moment-timer\1.1.2\package.tgz
+13 verbose folder C:\Users\Søren\code\moment-timer
+14 verbose addLocalTarball adding from inside cache C:\Users\Søren\AppData\Roaming\npm-cache\moment-timer\1.1.2\package.tgz
+15 silly cache afterAdd moment-timer@1.1.2
+16 verbose afterAdd C:\Users\Søren\AppData\Roaming\npm-cache\moment-timer\1.1.2\package\package.json not in flight; writing
+17 verbose afterAdd C:\Users\Søren\AppData\Roaming\npm-cache\moment-timer\1.1.2\package\package.json written
+18 silly publish { name: 'moment-timer',
+18 silly publish   version: '1.1.2',
+18 silly publish   description: 'A moment.js plugin for timers setInterval & setTimeout.',
+18 silly publish   main: 'lib/moment-timer.js',
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git+https://github.com/SeverinDK/moment-timer.git' },
+18 silly publish   dependencies: { moment: 'latest' },
+18 silly publish   authors: [ 'Søren Ernst <some12thing@gmail.com>' ],
+18 silly publish   keywords:
+18 silly publish    [ 'setInterval',
+18 silly publish      'interval',
+18 silly publish      'setTimeout',
+18 silly publish      'timeout',
+18 silly publish      'timer',
+18 silly publish      'moment' ],
+18 silly publish   license: 'MIT',
+18 silly publish   bugs: { url: 'https://github.com/SeverinDK/moment-timer/issues' },
+18 silly publish   readme: '# moment-timer\r\n\r\n###Synopsis\r\nThis is a Moment.js plugin that allows the use of timers, which offer much more control than the native JavaScript timers. It\'s basically a rewrite of JavaScripts own setInterval and setTimeout. For an example, see the example folder or read the Usage section below.\r\n\r\n<hr>\r\n\r\n###Installation\r\n\r\n#### Npm\r\n```\r\nnpm install moment-timer\r\n```\r\n\r\n#### Bower\r\n```\r\nbower install moment-timer\r\n```\r\n\r\n#### Browser\r\n```\r\n<script src="path/to/moment-timer.js"></script>\r\n```\r\nWhen using this plugin in the browser, be sure to include moment.js on your page first.\r\n\r\n<hr>\r\n\r\n###Usage\r\n\r\n#### How to use moment-timer. This will create a timeout like timer that runs after five seconds.\r\n```javascript\r\nvar timer = moment.duration(5, "seconds").timer(function() { \r\n  // Callback \r\n});\r\n```\r\n\r\n#### In this example we will create an interval like timer. Simply set the <b>loop</b> attribute.\r\n```javascript\r\nvar timer = moment.duration(5, "seconds").timer({loop: true}, function() { \r\n  // Callback \r\n});\r\n```\r\n\r\n#### Prevent the timer from starting on creation, by using the <b>start</b> attribute, so we can start it later.\r\n```javascript\r\nvar timer = moment.duration(5, "seconds").timer({loop: true, start: false}, function() { \r\n  // Callback \r\n});\r\ntimer.start();\r\n```\r\n\r\n#### Delaying a timer can be done by using the <b>wait</b> attribute.\r\n```javascript\r\nvar timer = moment.duration(5, "seconds").timer({\r\n  wait: moment.duration(1, "hour"),\r\n  loop: true,\r\n}, function() { \r\n  // Callback \r\n});\r\n```\r\n\r\n#### Getting the remaining duration of a timer. (How long until it ends or loops again)\r\n```javascript\r\nvar timer = moment.duration(5, "seconds").timer({\r\n  loop: true, \r\n}, function() { \r\n  // Callback \r\n});\r\n\r\nvar remainingDuration = timer.getRemainingDuration();\r\n```\r\n\r\n#### Setting the duration of a timer. This will override the duration set when the timer was created.\r\n```javascript\r\nvar timer = moment.duration(5, "seconds").timer({\r\n  loop: true, \r\n}, function() { \r\n  // Callback \r\n});\r\n\r\ntimer.duration(2000);\r\ntimer.duration("2", "seconds");\r\ntimer.duration({seconds: 2});\r\n```\r\n\r\n#### In this example a timer is set to start instantly.<br>Since the loop attribute hasn\'t been set, it will behave like a timeout, however it is possible to reuse it simply by calling start().\r\n```javascript\r\nvar timer = moment.duration().timer({\r\n}, function() { \r\n  // Callback \r\n});\r\n\r\ntimer.start();\r\n```\r\n\r\n<hr>\r\n\r\n###Motivation\r\nMy motivation for makning this script is to prevent any annoyance in the future when working with JavaScript timers. With these tools, I know that I will prevent a lot of the problems I have had through time.\r\nBut ofc, the biggest motivation is simply making the idea come alive and enjoying the result. Every completed idea is a new lesson learned!\r\n\r\n<hr>\r\n\r\n###License\r\nMIT - Go ahead and do whatever you want! I doooon\'t caaare! ;-)\r\n\r\n<hr>\r\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: '71f261022015a9ebb5c3227010b115ceabb1b329',
+18 silly publish   homepage: 'https://github.com/SeverinDK/moment-timer#readme',
+18 silly publish   _id: 'moment-timer@1.1.2',
+18 silly publish   scripts: {},
+18 silly publish   _shasum: 'f34a5c7241f60232f821c4ed651c87be8d223238',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name moment-timer
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/moment-timer
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading C:\Users\Søren\AppData\Roaming\npm-cache\moment-timer\1.1.2\package.tgz
+26 verbose request uri https://registry.npmjs.org/moment-timer
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 17:31:11
+29 verbose request using bearer token for auth
+30 verbose request id 5baf625ed23d5dce
+31 http request PUT https://registry.npmjs.org/moment-timer
+32 http 403 https://registry.npmjs.org/moment-timer
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'content-length': '95',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Sat, 22 Oct 2016 15:31:16 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-bma7024-BMA',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1477150275.477438,VS0,VE1168',
+33 verbose headers   vary: 'Accept-Encoding' }
+34 verbose request invalidating C:\Users\Søren\AppData\Roaming\npm-cache\registry.npmjs.org\moment-timer on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: "You cannot publish over the previously published version 1.1.2." : moment-timer
+36 verbose stack     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+36 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+36 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+36 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:198:22)
+36 verbose stack     at emitTwo (events.js:87:13)
+36 verbose stack     at Request.emit (events.js:172:7)
+36 verbose stack     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1082:10)
+36 verbose stack     at emitOne (events.js:82:20)
+36 verbose stack     at Request.emit (events.js:169:7)
+36 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1009:12)
+37 verbose statusCode 403
+38 verbose pkgid moment-timer
+39 verbose cwd C:\Users\Søren\code\moment-timer
+40 error Windows_NT 10.0.14393
+41 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+42 error node v5.1.0
+43 error npm  v3.3.12
+44 error code E403
+45 error "You cannot publish over the previously published version 1.1.2." : moment-timer
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
