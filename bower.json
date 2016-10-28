@@ -1,6 +1,6 @@
 {
 	"name": "moment-timer",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"description": "A moment.js plugin for timers setInterval & setTimeout.",
 	"main": "lib/moment-timer.js",
 	"repository": {

@@ -55,20 +55,15 @@
 			var intervalContainer = document.getElementById("interval");
 			var startTick = new Date().getTime();
 			var interval = moment.duration(1, "seconds").timer({
-					loop: true
+					loop: true,
+					wait: 2500,
+					executeAfterWait: true
 				}, 
 				function() { 
 					intervalContainer.innerHTML += "Callback fired " 
 					+ (new Date().getTime() - startTick) 
 					+ "ms after script was started.<br>"; 
 				});
-
-			moment.duration(1500).timer({loop: false}, function() {
-				interval.stop();
-				moment.duration(1500).timer(function() {
-					interval.start();
-				});
-			});
 		</script>
 	</div>
 </body>
