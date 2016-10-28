@@ -91,7 +91,7 @@ var timer = moment.duration(5, "seconds").timer({
 });
 ```
 
-#### Having the timer execute after waiting, can be done by using the <b>executeAfterWait</b> attribute. In the example below, the timer will wait for an hour, then execute and do so again after another give seconds.
+#### Having the timer execute after waiting, can be done by using the <b>executeAfterWait</b> attribute. In the example below, the timer will wait for an hour, then execute and do so again after another five seconds.
 ```javascript
 var timer = moment.duration(5, "seconds").timer({
   wait: moment.duration(1, "hour"),
