@@ -36,20 +36,52 @@ var timer = moment.duration(5, "seconds").timer(function() {
 
 #### In this example we will create an interval like timer. Simply set the <b>loop</b> attribute.
 ```javascript
-var timer = moment.duration(5, "seconds").timer({loop: true}, function() { 
+var timer = moment.duration(5, "seconds").timer({
+  loop: true
+}, function() { 
   // Callback 
 });
 ```
 
 #### Prevent the timer from starting on creation, by using the <b>start</b> attribute, so we can start it later.
 ```javascript
-var timer = moment.duration(5, "seconds").timer({loop: true, start: false}, function() { 
+var timer = moment.duration(5, "seconds").timer({
+  loop: true, 
+  start: false
+}, function() { 
   // Callback 
 });
 timer.start();
 ```
 
-#### Delaying a timer can be done by using the <b>wait</b> attribute.
+#### Stopping a timer can be done by using the stop() function. After the timer has been stopped, the start function can be used to start it again.
+```javascript
+var timer = moment.duration(5, "seconds").timer({
+  loop: true, 
+  start: true
+}, function() { 
+  // Callback 
+});
+timer.stop();
+timer.start();
+```
+
+#### See if a timer has been stopped.
+```javascript
+var timer = moment.duration(5, "seconds").timer({
+  loop: true, 
+  start: true
+}, function() { 
+  // Callback 
+});
+timer.stop();
+timer.isStopped(); // True
+
+timer.start();
+timer.isStopped(); // False
+```
+
+#### Delaying a timer can be done by using the <b>wait</b> attribute. In the example below, the timer will wait for an hour and five seconds before it executes.
 ```javascript
 var timer = moment.duration(5, "seconds").timer({
   wait: moment.duration(1, "hour"),
@@ -59,15 +91,15 @@ var timer = moment.duration(5, "seconds").timer({
 });
 ```
 
-#### Getting the remaining duration of a timer. (How long until it ends or loops again)
+#### Having the timer execute after waiting, can be done by using the <b>executeAfterWait</b> attribute. In the example below, the timer will wait for an hour, then execute and do so again after another give seconds.
 ```javascript
 var timer = moment.duration(5, "seconds").timer({
-  loop: true, 
+  wait: moment.duration(1, "hour"),
+  executeAfterWait: true,
+  loop: true,
 }, function() { 
   // Callback 
 });
-
-var remainingDuration = timer.getRemainingDuration();
 ```
 
 #### Setting the duration of a timer. This will override the duration set when the timer was created.
@@ -83,7 +115,29 @@ timer.duration("2", "seconds");
 timer.duration({seconds: 2});
 ```
 
-#### In this example a timer is set to start instantly.<br>Since the loop attribute hasn't been set, it will behave like a timeout, however it is possible to reuse it simply by calling start().
+#### Getting the duration of a timer.
+```javascript
+var timer = moment.duration(5, "seconds").timer({
+  loop: true, 
+}, function() { 
+  // Callback 
+});
+
+var duration = timer.getDuration();
+```
+
+#### Getting the remaining duration of a timer. (How long until it ends or loops again)
+```javascript
+var timer = moment.duration(5, "seconds").timer({
+  loop: true, 
+}, function() { 
+  // Callback 
+});
+
+var remainingDuration = timer.getRemainingDuration();
+```
+
+#### In this example we an see that a "timeout like timer" can be reused. If you run this example, you will notice it executing the callback twice. This is to show that even if you use the timer like a timeout, it can be reused, unlike JavaScripts native setTimeout that will only function once.
 ```javascript
 var timer = moment.duration().timer({
 }, function() { 
