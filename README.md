@@ -1,11 +1,11 @@
 # moment-timer
 
-###Synopsis
+### Synopsis
 This is a Moment.js plugin that allows the use of timers, which offer much more control than the native JavaScript timers. It's basically a rewrite of JavaScripts own setInterval and setTimeout. For an example, see the example folder or read the Usage section below.
 
 <hr>
 
-###Installation
+### Installation
 
 #### Npm
 ```
@@ -25,7 +25,7 @@ When using this plugin in the browser, be sure to include moment.js on your page
 
 <hr>
 
-###Usage
+### Usage
 
 #### How to use moment-timer. This will create a timeout like timer that runs after five seconds.
 ```javascript
@@ -149,13 +149,13 @@ timer.start();
 
 <hr>
 
-###Motivation
-My motivation for makning this script is to prevent any annoyance in the future when working with JavaScript timers. With these tools, I know that I will prevent a lot of the problems I have had through time.
+### Motivation
+My motivation for making this script is to prevent any annoyance in the future when working with JavaScript timers. With these tools, I know that I will prevent a lot of the problems I have had through time.
 But ofc, the biggest motivation is simply making the idea come alive and enjoying the result. Every completed idea is a new lesson learned!
 
 <hr>
 
-###License
+### License
 MIT - Go ahead and do whatever you want! I doooon't caaare! ;-)
 
 <hr>
