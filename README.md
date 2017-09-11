@@ -1,161 +1,195 @@
 # moment-timer
 
-### Synopsis
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url]
+
+---
+
+## Synopsis
 This is a Moment.js plugin that allows the use of timers, which offer much more control than the native JavaScript timers. It's basically a rewrite of JavaScripts own setInterval and setTimeout. For an example, see the example folder or read the Usage section below.
 
-<hr>
+--- 
 
-### Installation
+## Latest changes
 
-#### Npm
+New version v1.2.1 released with better documentation and a new isStarted function.
+
+**Module loading was added in last version, v1.2.0 thanks to [Alxmerino.](https://github.com/Alxmerino)**
+
+---
+
+## Installation
+
+### Npm
 ```
 npm install moment-timer
 ```
 
-#### Bower
+### Bower
 ```
 bower install moment-timer
 ```
 
-#### Browser
+### Browser
 ```
 <script src="path/to/moment-timer.js"></script>
 ```
 When using this plugin in the browser, be sure to include moment.js on your page first.
 
-<hr>
+---
 
-### Usage
+## Attributes
 
-#### How to use moment-timer. This will create a timeout like timer that runs after five seconds.
-```javascript
-var timer = moment.duration(5, "seconds").timer(function() { 
-  // Callback 
-});
+### (bool) start
+```js
+new moment.duration(1000).timer({ start: true }, callback);
 ```
+Setting this attribute to true will cause the timer to start once instantiated.
 
-#### In this example we will create an interval like timer. Simply set the <b>loop</b> attribute.
-```javascript
-var timer = moment.duration(5, "seconds").timer({
-  loop: true
-}, function() { 
-  // Callback 
-});
+---
+
+### (bool) loop
+```js
+new moment.duration(1000).timer({ loop: true }, callback);
 ```
+Setting this attribute to true will cause the timer to loop/restart once a duration is complete.
 
-#### Prevent the timer from starting on creation, by using the <b>start</b> attribute, so we can start it later.
-```javascript
-var timer = moment.duration(5, "seconds").timer({
-  loop: true, 
-  start: false
-}, function() { 
-  // Callback 
-});
+---
+
+### (int | moment.duration) wait
+```js
+new moment.duration(1000).timer({ wait: 5000 }, callback);
+```
+```js
+new moment.duration(1000).timer({ wait: moment.duration(5, 'seconds') }, callback);
+```
+Setting this attribute will cause the timer to wait for a specified amount of time ebfore starting it's duration. This is kind of an extra first duration. Imagine a timer that runs every second. Setting the wait attribute to 5000 / 5 seconds, means it waits that long and then starts acting like a normal timer would. Notice that this attribute accepts both int and moment.duration .
+
+---
+
+### (bool) executeAfterWait
+```js
+new moment.duration(1000).timer({ wait: 5000, executeAfterWait: true }, callback);
+```
+Setting this attribute to true will cause the callback function to be called after the wait duration has ended. This is a way to make sure the callback is executed even before the timer starts.
+
+---
+
+## Functions
+### .start()
+```js
+let timer = new moment.duration(1000).timer(callback);
 timer.start();
 ```
+This function will cause the timer to start. It can be used if the start attribute has not been set or if the timer has been stopped.
 
-#### Stopping a timer can be done by using the stop() function. After the timer has been stopped, the start function can be used to start it again.
-```javascript
-var timer = moment.duration(5, "seconds").timer({
-  loop: true, 
-  start: true
-}, function() { 
-  // Callback 
-});
+---
+
+### .stop()
+```js
+let timer = new moment.duration(1000).timer({ start: true }, callback);
 timer.stop();
-timer.start();
 ```
+This function will cause the timer to stop. It can be used if timer has been started to halt it.
 
-#### See if a timer has been stopped.
-```javascript
-var timer = moment.duration(5, "seconds").timer({
-  loop: true, 
-  start: true
-}, function() { 
-  // Callback 
-});
+---
+
+### .duration(int | moment.duration)
+```js
+let timer = new moment.duration(1000).timer(callback);
+timer.duration(5000);
+timer.duration(moment.duration(5, "seconds");
+```
+This function can be used to change the duration the timer was instantiated with.
+
+---
+
+### .getDuration()
+```js
+let timer = new moment.duration(1000).timer(callback);
+timer.getDuration();
+```
+This function will return the current duration of a timer. In this case it will return 1000.
+
+---
+
+### .getRemainingDuration()
+```js
+let timer = new moment.duration(1000).timer(callback);
+timer.getRemainingDuration();
+```
+This function will return the remaining duration of a timers cycle. In this case, imagine that the timer has been running for 500ms and we call .getRemainingDuration() on it, in this example it will return 500, since half of the cycle has completed.
+
+---
+
+### .isStopped()
+
+```js
+let timer = new moment.duration(1000).timer(callback);
+timer.start();
+timer.isStopped();  // false
 timer.stop();
-timer.isStopped(); // True
+timer.isStopped();  // true
+```
+This function can be used to see if the timer has been stopped by the .stop() function.
 
+---
+
+### .isStarted()
+
+```js
+let timer = new moment.duration(1000).timer(callback);
 timer.start();
-timer.isStopped(); // False
+timer.isStarted();  // true
+timer.stop();
+timer.isStarted();  // false
 ```
+This function can be used to see if the timer has been started by the .start() function. If this function is called on a timer that has reached the end of it's duration and does not loop, it will also return false as if the timer has not yet been started.
 
-#### Delaying a timer can be done by using the <b>wait</b> attribute. In the example below, the timer will wait for an hour and five seconds before it executes.
-```javascript
-var timer = moment.duration(5, "seconds").timer({
-  wait: moment.duration(1, "hour"),
-  loop: true,
-}, function() { 
-  // Callback 
-});
-```
+---
 
-#### Having the timer execute after waiting, can be done by using the <b>executeAfterWait</b> attribute. In the example below, the timer will wait for an hour, then execute and do so again after another five seconds.
-```javascript
-var timer = moment.duration(5, "seconds").timer({
-  wait: moment.duration(1, "hour"),
-  executeAfterWait: true,
-  loop: true,
-}, function() { 
-  // Callback 
-});
-```
+Feel free to [open a new issue](https://github.com/SeverinDK/moment-timer/issues/new) or [create a pull request](https://github.com/SeverinDK/moment-timer/pulls) if you can think of other useful attributes or functions.
 
-#### Setting the duration of a timer. This will override the duration set when the timer was created.
-```javascript
-var timer = moment.duration(5, "seconds").timer({
-  loop: true, 
-}, function() { 
-  // Callback 
-});
+---
 
-timer.duration(2000);
-timer.duration("2", "seconds");
-timer.duration({seconds: 2});
-```
+## Changelog
+#### v1.2.1
+Updated readme with better documentation and added a new isStarted function.
+#### v1.2.0
+Added module loading!
+#### v1.1.5
+Added getDuration and executeAfterWait attribute.
+#### v1.1.4
+Added isStopped function.
+#### v1.1.3:
+...
+#### v1.1.2:
+Fixed stop function. It still had an old unused paused variable instead of the new stopped variable. Fixing this will ensure that stopping and starting the timer will not cause any problems.
+#### v1.1.1:
+Cleaned up some things, fixed a remainingDuration bug and added an internal clearTimer function.
+#### v1.1.0:
+Changed setDuration to duration and added actual moment.duration support to it.
+Deprecated error message on setDuration will be removed in next release.
+#### v1.0.0:
+Initial Release.
 
-#### Getting the duration of a timer.
-```javascript
-var timer = moment.duration(5, "seconds").timer({
-  loop: true, 
-}, function() { 
-  // Callback 
-});
+---
 
-var duration = timer.getDuration();
-```
+## Contributing
 
-#### Getting the remaining duration of a timer. (How long until it ends or loops again)
-```javascript
-var timer = moment.duration(5, "seconds").timer({
-  loop: true, 
-}, function() { 
-  // Callback 
-});
+You are always welcome to contribute to this repository. Create your own branch, make the changes you wish to see and create a pull request that we can have a look at. If the changes make sense and the quality of code is good enough, then it will be merged into the master branch so other people can use it.
 
-var remainingDuration = timer.getRemainingDuration();
-```
+A full list of contributers for moment-timer.js can be found [here.](https://github.com/SeverinDK/moment-timer/graphs/contributors)
 
-#### In this example we an see that a "timeout like timer" can be reused. If you run this example, you will notice it executing the callback twice. This is to show that even if you use the timer like a timeout, it can be reused, unlike JavaScripts native setTimeout that will only function once.
-```javascript
-var timer = moment.duration().timer({
-}, function() { 
-  // Callback 
-});
+---
 
-timer.start();
-```
+## License
 
-<hr>
+Moment-timer.js is freely distributable under the terms of the [MIT license](https://github.com/SeverinDK/moment-timer/blob/master/LICENSE).
 
-### Motivation
-My motivation for making this script is to prevent any annoyance in the future when working with JavaScript timers. With these tools, I know that I will prevent a lot of the problems I have had through time.
-But ofc, the biggest motivation is simply making the idea come alive and enjoying the result. Every completed idea is a new lesson learned!
+---
 
-<hr>
-
-### License
-MIT - Go ahead and do whatever you want! I doooon't caaare! ;-)
-
-<hr>
+[npm-url]: https://npmjs.org/package/moment-timer
+[npm-version-image]: http://img.shields.io/npm/v/moment-timer.svg?style=flat
+[npm-downloads-image]: http://img.shields.io/npm/dm/moment-timer.svg?style=flat
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
