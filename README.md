@@ -9,11 +9,9 @@ This is a Moment.js plugin that allows the use of timers, which offer much more 
 
 --- 
 
-## Latest changes
+## Latest major changes
 
-New version v1.2.1 released with better documentation and a new isStarted function.
-
-**Module loading was added in last version, v1.2.0 thanks to [Alxmerino.](https://github.com/Alxmerino)**
+**Module loading was added in v1.2.0 thanks to [Alxmerino.](https://github.com/Alxmerino)**
 
 ---
 
@@ -152,6 +150,8 @@ Feel free to [open a new issue](https://github.com/SeverinDK/moment-timer/issues
 ---
 
 ## Changelog
+#### v1.2.2
+Removed debug console.log
 #### v1.2.1
 Updated readme with better documentation and added a new isStarted function.
 #### v1.2.0
