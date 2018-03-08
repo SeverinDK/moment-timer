@@ -8,7 +8,7 @@
 		"url": "https://github.com/SeverinDK/moment-timer"
 	},
 	"dependencies": {
-		"moment": "latest"
+		"moment": ">= 1.6.0"
 	},
 	"authors": [
 		"Søren Ernst <some12thing@gmail.com>"
