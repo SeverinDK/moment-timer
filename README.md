@@ -7,12 +7,6 @@
 ## Synopsis
 This is a Moment.js plugin that allows the use of timers, which offer much more control than the native JavaScript timers. It's basically a rewrite of JavaScripts own setInterval and setTimeout. For an example, see the example folder or read the Usage section below.
 
---- 
-
-## Latest major changes
-
-**Module loading was added in v1.2.0 thanks to [Alxmerino.](https://github.com/Alxmerino)**
-
 ---
 
 ## Installation
@@ -150,6 +144,8 @@ Feel free to [open a new issue](https://github.com/SeverinDK/moment-timer/issues
 ---
 
 ## Changelog
+#### v1.2.3
+[Relaxed moment dependency.](https://github.com/SeverinDK/moment-timer/pull/13)
 #### v1.2.2
 Removed debug console.log
 #### v1.2.1
