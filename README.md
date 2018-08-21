@@ -21,6 +21,11 @@ npm install moment-timer
 bower install moment-timer
 ```
 
+### CDN
+```
+<script src="https://cdn.jsdelivr.net/npm/moment-timer/lib/moment-timer.js"></script>
+```
+
 ### Browser
 ```
 <script src="path/to/moment-timer.js"></script>
