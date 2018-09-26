@@ -59,7 +59,7 @@ new moment.duration(1000).timer({ wait: 5000 }, callback);
 ```js
 new moment.duration(1000).timer({ wait: moment.duration(5, 'seconds') }, callback);
 ```
-Setting this attribute will cause the timer to wait for a specified amount of time ebfore starting it's duration. This is kind of an extra first duration. Imagine a timer that runs every second. Setting the wait attribute to 5000 / 5 seconds, means it waits that long and then starts acting like a normal timer would. Notice that this attribute accepts both int and moment.duration .
+Setting this attribute will cause the timer to wait for a specified amount of time before starting it's duration. This is kind of an extra first duration. Imagine a timer that runs every second. Setting the wait attribute to 5000 / 5 seconds, means it waits that long and then starts acting like a normal timer would. Notice that this attribute accepts both int and moment.duration .
 
 ---
 
