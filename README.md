@@ -149,6 +149,8 @@ Feel free to [open a new issue](https://github.com/SeverinDK/moment-timer/issues
 ---
 
 ## Changelog
+#### v1.3
+Fixed issue where .stop() would not stop the timer. See https://github.com/SeverinDK/moment-timer/issues/20
 #### v1.2.3
 [Relaxed moment dependency.](https://github.com/SeverinDK/moment-timer/pull/13)
 #### v1.2.2
