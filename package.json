@@ -1,6 +1,6 @@
 {
 	"name": "moment-timer",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"description": "A moment.js plugin for timers setInterval & setTimeout.",
 	"main": "lib/moment-timer.js",
 	"repository": {
@@ -8,7 +8,7 @@
 		"url": "https://github.com/SeverinDK/moment-timer"
 	},
 	"dependencies": {
-		"moment": ">= 1.6.0"
+		"moment": ">= 2.19.3"
 	},
 	"authors": [
 		"Søren Ernst <some12thing@gmail.com>"
